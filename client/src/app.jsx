@@ -49,10 +49,14 @@ class App extends React.Component {
       },
       success: data => {
         console.log('success', data);
-        this.setState({
-          pairs: data
-        })
+        this.setPairings(data);
       }
+    });
+  }
+
+  setPairings(data) {
+    this.setState({
+      pairs: data
     });
   }
 
@@ -68,7 +72,7 @@ class App extends React.Component {
       <Grid style={styles.container}>
         <h1 style={styles.h1}>App 4 Food</h1>
         <Drop handlePreferences={this.handlePref.bind(this)}/>
-        <Upload />
+        <Upload setPairings={this.setPairings.bind(this)}/>
         <form style={styles.form}>
           <FormControl style={styles.inputBox} bsSize="small" type="text" placeholder="Search here" onChange={this.handleChange} />
           <Button type="button" bsSize="small" onClick={this.search}>Submit</Button>

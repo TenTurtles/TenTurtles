@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import PairingListEntry from './pairingListEntry.jsx'
+import PairingListEntry from './pairingListEntry.jsx';
 
 class PairingList extends React.Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class PairingList extends React.Component {
     return (
       <div>
       {
-        pairings.map(pair => {
-          return <PairingListEntry pair={pair} />
+        pairings.map((pair, index) => {
+          return <PairingListEntry key={index} pair={pair} />
         })
       }
       </div>

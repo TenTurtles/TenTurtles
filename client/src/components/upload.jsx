@@ -47,8 +47,9 @@ export default class Upload extends React.Component {
       data: {
         url: this.state.uploadedFileCloudinaryUrl
       },
-      success: function(result) {
-        console.log(result);
+      success: result => {
+        console.log('result: ', result);
+        this.props.setPairings(result);
       }
     });
   }
