@@ -4,13 +4,19 @@ import { FormControl, Button, Grid } from 'react-bootstrap';
 import $ from 'jquery';
 import Drop from './components/nav.jsx';
 import Upload from './components/upload.jsx';
+import PairingList from './components/pairingList.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       item: '',
-      prefer: ''
+      prefer: '',
+      pairs: {
+        finalRecipes: [],
+        finalWines: []
+      }
     };
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -41,8 +47,11 @@ class App extends React.Component {
         item: this.state.item,
         choices: passPref
       },
-      success: function(data) {
+      success: data => {
         console.log('success', data);
+        this.setState({
+          pairs: data
+        })
       }
     });
   }
@@ -64,6 +73,7 @@ class App extends React.Component {
           <FormControl style={styles.inputBox} bsSize="small" type="text" placeholder="Search here" onChange={this.handleChange} />
           <Button type="button" bsSize="small" onClick={this.search}>Submit</Button>
         </form>
+        <PairingList pairs={this.state.pairs} />
       </Grid>
     )
   }
