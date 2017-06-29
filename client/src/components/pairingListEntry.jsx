@@ -47,7 +47,7 @@ class pairingListEntry extends React.Component {
         </Row>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.pair[0].label}</Modal.Title>
+            <Modal.Title><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Grid >
@@ -80,10 +80,10 @@ class pairingListEntry extends React.Component {
                 </Col>
                 <Col xs={3}>
                   <ListGroup style={styles.smallFont}>
-                    <ListGroupItem>{this.props.pair[1][0].type}</ListGroupItem>
-                    <ListGroupItem>{this.props.pair[1][0].region}</ListGroupItem>
-                    <ListGroupItem>{this.props.pair[1][0].rating}</ListGroupItem>
-                    <ListGroupItem>{this.props.pair[1][0].price}</ListGroupItem>
+                    <ListGroupItem><span style={styles.bold}>Varietal: </span>{this.props.pair[1][0].type}</ListGroupItem>
+                    <ListGroupItem><span style={styles.bold}>Region: </span>{this.props.pair[1][0].region}</ListGroupItem>
+                    <ListGroupItem><span style={styles.bold}>Rating: </span>{this.props.pair[1][0].rating}</ListGroupItem>
+                    <ListGroupItem><span style={styles.bold}>Price: </span>${this.props.pair[1][0].price}</ListGroupItem>
                   </ListGroup>
                 </Col>
               </Row>
