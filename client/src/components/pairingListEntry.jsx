@@ -50,7 +50,7 @@ class pairingListEntry extends React.Component {
         } eventKey="1">
           <Grid style={styles.container}>
 
-            <h5><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></h5>
+            <h2><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></h2>
 
             <Row>
               <Col xs={12}>
@@ -68,7 +68,7 @@ class pairingListEntry extends React.Component {
 
             <hr />
 
-            <h5><a href={this.props.pair[1][0].url}>{this.props.pair[1][0].name}</a></h5>
+            <h2><a href={this.props.pair[1][0].url}>{this.props.pair[1][0].name}</a></h2>
 
             <Row>
               <Col xs={3}>
@@ -105,21 +105,22 @@ let styles = {
     bottomBorder: '1px solid black'
   },
   listGroup: {
-    fontSize: '10px',
+    verticalAlign: 'center',
+    fontSize: '25px',
     marginRight: '10px',
     padding: '5px',
     border: '1px dashed black'
   },
   recipeName: {
     fontWeight: 'bold',
-    fontSize: '16px'
+    fontSize: '36px'
   },
   drinkName: {
     fontStyle: 'italics',
-    fontSize: '16px'
+    fontSize: '36px'
   },
   thumbnail: {
-    height: '105px',
+    height: '200px',
     width: 'auto'
   },
   image: {

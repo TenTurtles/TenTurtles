@@ -44,7 +44,7 @@ class Drop extends React.Component {
           <div>
             <Well>
             {this.state.preferences.map((pref, index) => {
-              return (<Checkbox key={index} inline type="checkbox" onClick={() => this.markedPref(pref)}>{pref}</Checkbox>)
+              return (<Checkbox style={styles.dropBox} key={index} inline type="checkbox" onClick={() => this.markedPref(pref)}>{pref}</Checkbox>)
             })}
 {/*            <Well>
               <Checkbox inline type="checkbox">Vegetarian</Checkbox>
@@ -68,7 +68,7 @@ let styles = {
     width: '100%',
     height: '75px',
     padding: '6px 10px',
-    fontSize: '12px'
+    fontSize: '35px'
   }
 }
 
