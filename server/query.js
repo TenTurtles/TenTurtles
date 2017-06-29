@@ -5,6 +5,7 @@ const recipe = require('./recipeRefactor.js');
 const wine = require('./wineRefactor.js');
 const api = require('./config.js');
 const axios = require('axios');
+const exampleData = require('./exampleData.js');
 
 const apiQuery = (data, res) => {
   let finalResults = {
@@ -18,7 +19,6 @@ const apiQuery = (data, res) => {
       url += '&health=' + choices[i];
     }
   }
-  // console.log(url);
   axios.post(url, { "app_id": api.recipe_appId, "app_key": api.recipe_appkey })
   .then((result) => {
     return recipe.refactor(result.data.hits);
@@ -33,26 +33,22 @@ const apiQuery = (data, res) => {
   })
   .then(ingredients => {
     return Promise.map(ingredients, ingredient => {
-      console.log('ingredient: ', ingredient);
+      // console.log('ingredient: ', ingredient);
       return axios.post('http://138.68.58.133/pairing', {"ingredients": ingredient}).then(result => {
         return result.data;
       });
     });
   })
   .then(wines => {
-    return Promise.map(wines, wineArray => {
-      console.log('wine: ', wineArray);
-      let random = Math.floor(Math.random() * (wineArray.length));
-      // console.log(random);
-      // console.log('wineArray: ', wineArray[random]);
-      return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|100)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random] || 'pinot noir'}).then(result => {
-        // console.log('wines:::::: ', result.data.Products.List[0]);
-        return wine.refactor(result.data.Products.List);
-      });
-    });
+    // return Promise.map(wines, wineArray => {
+    //   let random = Math.floor(Math.random() * (wineArray.length));
+    //   return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|100)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
+    //     return wine.refactor(result.data.Products.List);
+    //   });
+    // });
+    return exampleData.exampleData;
   })
   .then(wines => {
-    // console.log('wineeee')
     wines.map(wine => {
       finalResults.finalWines.push([wine]);
     });
