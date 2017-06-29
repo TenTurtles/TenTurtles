@@ -89,15 +89,17 @@ let styles = {
     textAlign: 'center'
   },
   container: {
-    width: '375px',
+    width: '100%',
     padding: '10px'
   },
   form: {
     padding: '10px'
   },
   inputBox: {
+    marginTop: '10px',
     display: 'inline-block',
-    width: '100%'
+    width: '100%',
+    height: '75px'
   }
 };
 

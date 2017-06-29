@@ -38,10 +38,10 @@ class pairingListEntry extends React.Component {
                 <Image style={styles.thumbnail} src={this.props.pair[0].image} rounded />
               </Col>
               <Col xs={7}>
-                <Row style={styles.bold}>
+                <Row style={styles.recipeName}>
                   <p>{this.props.pair[0].label}</p>
                 </Row>
-                <Row style={styles.italics}>
+                <Row style={styles.drinkName}>
                   {this.props.pair[1][0].name}
                 </Row>
               </Col>
@@ -71,13 +71,13 @@ class pairingListEntry extends React.Component {
             <h5><a href={this.props.pair[1][0].url}>{this.props.pair[1][0].name}</a></h5>
 
             <Row>
-              <Col xs={5}>
+              <Col xs={3}>
                 <Image style={styles.block} src={this.props.pair[1][0].labelUrl} rounded />
                 <a href="http://www.wine.com/" title="Wine.com the destination for Wine and Wine Gifts">
                   <img src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" />
                 </a>
               </Col>
-              <Col xs={7}>
+              <Col xs={9}>
                 <ListGroup style={styles.listGroup}>
                   <p><span style={styles.bold}>Varietal: </span>{this.props.pair[1][0].type}</p>
                   <p><span style={styles.bold}>Region: </span>{this.props.pair[1][0].region}</p>
@@ -109,6 +109,14 @@ let styles = {
     marginRight: '10px',
     padding: '5px',
     border: '1px dashed black'
+  },
+  recipeName: {
+    fontWeight: 'bold',
+    fontSize: '16px'
+  },
+  drinkName: {
+    fontStyle: 'italics',
+    fontSize: '16px'
   },
   thumbnail: {
     height: '105px',

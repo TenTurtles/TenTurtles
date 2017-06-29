@@ -66,6 +66,7 @@ class Drop extends React.Component {
 let styles = {
   dropBox: {
     width: '100%',
+    height: '75px',
     padding: '6px 10px',
     fontSize: '12px'
   }

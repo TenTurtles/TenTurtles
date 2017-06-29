@@ -74,7 +74,7 @@ export default class Upload extends React.Component {
 let styles = {
   dropzone: {
     width : '100%',
-    height : '20%',
+    height : '75px',
     marginBottom : '10px',
     border : '1px dashed black',
     textAlign : 'center'
