@@ -70,14 +70,13 @@ class App extends React.Component {
 
   render() {
     return (
-
       <Grid style={styles.container}>
         <h1 style={styles.h1}>App 4 Food</h1>
-        <Drop handlePreferences={this.handlePref.bind(this)}/>
         <Upload setPairings={this.setPairings.bind(this)}/>
+        <Drop handlePreferences={this.handlePref.bind(this)}/>
         <form style={styles.form}>
           <FormControl style={styles.inputBox} bsSize="small" type="text" placeholder="Search here" onChange={this.handleChange} />
-          <Button type="submit" bsSize="small" onClick={this.search}>Submit</Button>
+          <Button style={styles.inputBox} type="submit" bsSize="small" onClick={this.search}>Submit</Button>
         </form>
         <PairingList pairs={this.state.pairs} />
       </Grid>
@@ -90,16 +89,15 @@ let styles = {
     textAlign: 'center'
   },
   container: {
-    width: '750px',
-    padding: '25px'
+    width: '375px',
+    padding: '10px'
   },
   form: {
     padding: '10px'
   },
   inputBox: {
-    marginRight: '15px',
     display: 'inline-block',
-    width: '80%'
+    width: '100%'
   }
 };
 

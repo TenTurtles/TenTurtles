@@ -16,12 +16,12 @@ class Drop extends React.Component {
       open: false
 
       // preferences: [
-      // { preference: 'Vegetarian', marked: false }, 
-      // { preference: 'Vegan', marked: false }, 
-      // { preference: 'Dairy-Free', marked: false }, 
-      // { preference: 'Egg-Free', marked: false }, 
-      // { preference: 'Peanut-Free', marked: false }, 
-      // { preference: 'Alcohol-Free', marked: false }, 
+      // { preference: 'Vegetarian', marked: false },
+      // { preference: 'Vegan', marked: false },
+      // { preference: 'Dairy-Free', marked: false },
+      // { preference: 'Egg-Free', marked: false },
+      // { preference: 'Peanut-Free', marked: false },
+      // { preference: 'Alcohol-Free', marked: false },
       // { preference: 'Shellfish-Free', marked: false }, ]
     };
   }
@@ -65,6 +65,7 @@ class Drop extends React.Component {
 
 let styles = {
   dropBox: {
+    width: '100%',
     padding: '6px 10px',
     fontSize: '12px'
   }

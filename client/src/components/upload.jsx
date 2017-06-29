@@ -25,7 +25,7 @@ export default class Upload extends React.Component {
     let upload = request.post(cloud.CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', cloud.CLOUDINARY_UPLOAD_PRESET)
                         .field('file', file);
-    
+
     upload.end((err, response) => {
       if (err) {
         console.log(err);
@@ -59,14 +59,25 @@ export default class Upload extends React.Component {
       <form>
         <div className="FileUpload">
           <Dropzone
+            style={styles.dropzone}
             multiple={false}
             accept="image/*"
             onDrop={this.onImageDrop.bind(this)}>
-            <p>Drop an image or click to select a file to upload.</p>
+            <p>tap or click to search an image</p>
           </Dropzone>
         </div>
       </form>
     )
+  }
+}
+
+let styles = {
+  dropzone: {
+    width : '100%',
+    height : '20%',
+    marginBottom : '10px',
+    border : '1px dashed black',
+    textAlign : 'center'
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Image, Modal, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Grid, Row, Col, Image, Modal, Button, ListGroup, ListGroupItem, Accordion, Panel } from 'react-bootstrap';
 
 class pairingListEntry extends React.Component {
   constructor(props) {
@@ -30,72 +30,66 @@ class pairingListEntry extends React.Component {
 
   render() {
     return (
-      <Grid style={styles.container}>
-        <Row onClick={this.open.bind(this)}>
-          <Col xs={8}>
-            <Image style={styles.image} src={this.props.pair[0].image} rounded />
-          </Col>
-          <Col xs={4}>
-            <Row style={styles.bold}>
+      <Accordion>
+        <Panel header={
+          <Grid style={styles.container}>
+            <Row onClick={this.open.bind(this)}>
+              <Col xs={5}>
+                <Image style={styles.thumbnail} src={this.props.pair[0].image} rounded />
+              </Col>
+              <Col xs={7}>
+                <Row style={styles.bold}>
+                  <p>{this.props.pair[0].label}</p>
+                </Row>
+                <Row style={styles.italics}>
+                  {this.props.pair[1][0].name}
+                </Row>
+              </Col>
+            </Row>
+          </Grid>
+        } eventKey="1">
+          <Grid style={styles.container}>
 
-                <h3>{this.props.pair[0].label}</h3>
+            <h5><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></h5>
+
+            <Row>
+              <Col xs={12}>
+                <ListGroup style={styles.listGroup}>
+                  {
+                    this.props.pair[0].ingredients.map((ingredient, i) => {
+                      return <p key={i} >{ingredient.text}</p>
+                    })
+                  }
+                  <hr />
+                  <p style={styles.italics}>recipe by {this.props.pair[0].source}</p>
+                </ListGroup>
+              </Col>
             </Row>
-            <Row style={styles.italics}>
-                {this.props.pair[1][0].name}
-            </Row>
-          </Col>
-        </Row>
-        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
-          <Modal.Header closeButton>
-            <Modal.Title><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Grid >
-              <Row>
-                <Col xs={3}>
-                  <Image style={styles.image} src={this.props.pair[0].image} rounded />
-                </Col>
-                <Col xs={3}>
-                  <ListGroup>
-                    {
-                      this.props.pair[0].ingredients.map((ingredient, i) => {
-                        return <ListGroupItem style={styles.smallFont} key={i} >{ingredient.text}</ListGroupItem>
-                      })
-                    }
-                  </ListGroup>
-                </Col>
-              </Row>
-            </Grid>
 
             <hr />
 
-            <h4><a href={this.props.pair[1][0].url}>{this.props.pair[1][0].name}</a></h4>
-            <Grid>
-              <Row>
-                <Col xs={3}>
-                  <Image style={styles.block} src={this.props.pair[1][0].labelUrl} rounded />
-                  <a href="http://www.wine.com/" title="Wine.com the destination for Wine and Wine Gifts">
-                    <img src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" />
-                  </a>
-                </Col>
-                <Col xs={3}>
-                  <ListGroup style={styles.smallFont}>
-                    <ListGroupItem><span style={styles.bold}>Varietal: </span>{this.props.pair[1][0].type}</ListGroupItem>
-                    <ListGroupItem><span style={styles.bold}>Region: </span>{this.props.pair[1][0].region}</ListGroupItem>
-                    <ListGroupItem><span style={styles.bold}>Rating: </span>{this.props.pair[1][0].rating}</ListGroupItem>
-                    <ListGroupItem><span style={styles.bold}>Price: </span>${this.props.pair[1][0].price}</ListGroupItem>
-                  </ListGroup>
-                </Col>
-              </Row>
-            </Grid>
+            <h5><a href={this.props.pair[1][0].url}>{this.props.pair[1][0].name}</a></h5>
 
+            <Row>
+              <Col xs={5}>
+                <Image style={styles.block} src={this.props.pair[1][0].labelUrl} rounded />
+                <a href="http://www.wine.com/" title="Wine.com the destination for Wine and Wine Gifts">
+                  <img src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" />
+                </a>
+              </Col>
+              <Col xs={7}>
+                <ListGroup style={styles.listGroup}>
+                  <p><span style={styles.bold}>Varietal: </span>{this.props.pair[1][0].type}</p>
+                  <p><span style={styles.bold}>Region: </span>{this.props.pair[1][0].region}</p>
+                  <p><span style={styles.bold}>Rating: </span>{this.props.pair[1][0].rating}</p>
+                  <p><span style={styles.bold}>Price: </span>${this.props.pair[1][0].price}</p>
+                </ListGroup>
+              </Col>
+            </Row>
+          </Grid>
+        </Panel>
+      </Accordion>
 
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.close.bind(this)}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      </Grid>
     )
   }
 }
@@ -104,11 +98,24 @@ export default pairingListEntry;
 
 let styles = {
   container: {
-    width: '650px',
-    padding: '25px'
+    width: '100%',
+    padding: '10px'
+  },
+  bottomBorder: {
+    bottomBorder: '1px solid black'
+  },
+  listGroup: {
+    fontSize: '10px',
+    marginRight: '10px',
+    padding: '5px',
+    border: '1px dashed black'
+  },
+  thumbnail: {
+    height: '105px',
+    width: 'auto'
   },
   image: {
-    height: '200px',
+    height: '135px',
     width: 'auto'
   },
   block: {
@@ -124,3 +131,63 @@ let styles = {
     fontSize: '10px'
   }
 }
+        // <Row onClick={this.open.bind(this)}>
+        //   <Col xs={4}>
+        //     <Image style={styles.thumbnail} src={this.props.pair[0].image} rounded />
+        //   </Col>
+        //   <Col xs={6}>
+        //     <Row style={styles.bold}>
+        //       <p>{this.props.pair[0].label}</p>
+        //     </Row>
+        //     <Row style={styles.italics}>
+        //       {this.props.pair[1][0].name}
+        //     </Row>
+        //   </Col>
+        // </Row>
+        // <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+        //   <Modal.Header closeButton>
+        //     <Modal.Title><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></Modal.Title>
+        //   </Modal.Header>
+        //   <Modal.Body>
+        //     <Grid style={styles.bottomBorder}>
+        //       <Row>
+        //         <Col xs={3}>
+        //           <Image style={styles.image} src={this.props.pair[0].image} rounded />
+        //         </Col>
+        //         <Col xs={3}>
+        //           <ListGroup style={styles.listGroup}>
+        //             {
+        //               this.props.pair[0].ingredients.map((ingredient, i) => {
+        //                 return <p key={i} >{ingredient.text}</p>
+        //               })
+        //             }
+        //           </ListGroup>
+        //         </Col>
+        //       </Row>
+
+            // <h4><a href={this.props.pair[1][0].url}>{this.props.pair[1][0].name}</a></h4>
+
+            //   <Row>
+            //     <Col xs={3}>
+            //       <Image style={styles.block} src={this.props.pair[1][0].labelUrl} rounded />
+            //       <a href="http://www.wine.com/" title="Wine.com the destination for Wine and Wine Gifts">
+            //         <img src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" />
+            //       </a>
+            //     </Col>
+            //     <Col xs={3}>
+            //       <ListGroup style={styles.listGroup}>
+            //         <p><span style={styles.bold}>Varietal: </span>{this.props.pair[1][0].type}</p>
+            //         <p><span style={styles.bold}>Region: </span>{this.props.pair[1][0].region}</p>
+            //         <p><span style={styles.bold}>Rating: </span>{this.props.pair[1][0].rating}</p>
+            //         <p><span style={styles.bold}>Price: </span>${this.props.pair[1][0].price}</p>
+            //       </ListGroup>
+            //     </Col>
+      //       //   </Row>
+
+
+      //     </Modal.Body>
+      //     <Modal.Footer>
+      //       <Button onClick={this.close.bind(this)}>Close</Button>
+      //     </Modal.Footer>
+      //   </Modal>
+      // </Grid>
