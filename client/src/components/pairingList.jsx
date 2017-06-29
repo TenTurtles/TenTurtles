@@ -9,7 +9,6 @@ class PairingList extends React.Component {
 
   render() {
     let pairings = _.zip(this.props.pairs.finalRecipes, this.props.pairs.finalWines)
-    console.log('pairings: ', pairings)
     return (
       <div>
       {
