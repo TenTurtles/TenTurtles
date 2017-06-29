@@ -28,7 +28,7 @@ export default class Upload extends React.Component {
 
     upload.end((err, response) => {
       if (err) {
-        console.log(err);
+        console.log('error: ', err);
       }
 
       if (response.body.secure_url !== '') {

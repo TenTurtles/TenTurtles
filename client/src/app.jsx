@@ -96,10 +96,12 @@ let styles = {
     padding: '10px'
   },
   inputBox: {
+
     marginTop: '10px',
     display: 'inline-block',
     width: '100%',
     height: '75px'
+
   }
 };
 
