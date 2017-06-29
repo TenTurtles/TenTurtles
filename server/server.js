@@ -16,9 +16,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.post('/search', (req, res) => {
-  let item = req.body.item;
-  console.log('item ', item);
-  query.apiQuery(item, res);
+  let data = req.body;
+  console.log('data ', data);
+  query.apiQuery(data, res);
 });
 
 app.post('/clarifai', (req, res) => {

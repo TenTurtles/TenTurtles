@@ -5,14 +5,14 @@ class Drop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'Vegetarian': false,
-      'Vegan': false,
-      'Dairy-Free': false,
-      'Egg-Free': false,
-      'Peanut-Free': false,
-      'Alcohol-Free': false,
-      'Shellfish-Free': false,
-      preferences: ['Vegetarian', 'Vegan', 'Dairy-Free', 'Egg-Free', 'Peanut-Free', 'Alcohol-Free', 'Shellfish-Free'],
+      'vegetarian': false,
+      'vegan': false,
+      'dairy-free': false,
+      'egg-free': false,
+      'peanut-free': false,
+      'alcohol-free': false,
+      'shellfish-free': false,
+      preferences: ['vegetarian', 'vegan', 'dairy-free', 'egg-free', 'peanut-free', 'alcohol-free', 'shellfish-free'],
       open: false
 
       // preferences: [
@@ -32,8 +32,6 @@ class Drop extends React.Component {
     let obj = {};
     obj[selected] = !this.state[selected];
     this.setState(obj, () => {this.props.handlePreferences(this.state)});
-    // console.log('props', this.props);
-    // this.props.handlePreferences(this.state);
   }
 
   render() {

@@ -46,7 +46,7 @@ class App extends React.Component {
       method: 'POST',
       data: {
         item: this.state.item,
-        choices: passPref
+        choices: passPref || null
       },
       success: data => {
         console.log('success', data);
