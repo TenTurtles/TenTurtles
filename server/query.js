@@ -10,8 +10,10 @@ const exampleData = require('./exampleData.js');
 const apiQuery = (data, res) => {
   let finalResults = {
     finalRecipes: [],
-    finalWines: []
+    finalWines: [],
+    finalBeers: []
   };
+  let finalIngredients = [];
   let url = 'https://api.edamam.com/search?q=' + data.item;
   if (data.choices) {
     let choices = data.choices;
@@ -34,6 +36,7 @@ const apiQuery = (data, res) => {
   .then(ingredients => {
     return Promise.map(ingredients, ingredient => {
       // console.log('ingredient: ', ingredient);
+      finalIngredients.push(ingredient);
       return axios.post('http://138.68.58.133/pairing', {"ingredients": ingredient}).then(result => {
         return result.data;
       });
@@ -52,6 +55,12 @@ const apiQuery = (data, res) => {
     wines.map(wine => {
       finalResults.finalWines.push([wine]);
     });
+  })
+  .then(() => {
+    // finalIngredients is ingredient list query beer pairing API and berwery db for beer pairings
+    // output should be 10 beers with information that corresponse to the ingredeient list that was query.
+    // when finished, push output to finalResult.finalBeer
+    // reference line 55
   })
   .then( () => {
     res.send(finalResults);
