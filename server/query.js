@@ -6,13 +6,20 @@ const wine = require('./wineRefactor.js');
 const api = require('./config.js');
 const axios = require('axios');
 
-const apiQuery = (food, res) => {
+const apiQuery = (data, res) => {
   let finalResults = {
     finalRecipes: [],
     finalWines: []
   };
-  
-  axios.post('https://api.edamam.com/search?q=' + food, { "app_id": api.recipe_appId, "app_key": api.recipe_appkey })
+  let url = 'https://api.edamam.com/search?q=' + data.item;
+  if (data.choices) {
+    let choices = data.choices;
+    for (let i = 0; i < choices.length; i++) {
+      url += '&health=' + choices[i];
+    }
+  }
+  console.log(url);
+  axios.post(url, { "app_id": api.recipe_appId, "app_key": api.recipe_appkey })
   .then((result) => {
     return recipe.refactor(result.data.hits);
   })
@@ -34,14 +41,16 @@ const apiQuery = (food, res) => {
   .then(wines => {
     return Promise.map(wines, wineArray => {
       let random = Math.floor(Math.random() * wineArray.length);
-      return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?sortBy=rating|descending&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
+      return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|100)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
+        console.log('wines:::::: ', result.data.Products.List[0]);
         return wine.refactor(result.data.Products.List);
       });
     });
   })
   .then(wines => {
+    console.log('wineeee')
     wines.map(wine => {
-      finalResults.finalWines.push(wine);
+      finalResults.finalWines.push([wine]);
     });
   })
   .then( () => {
