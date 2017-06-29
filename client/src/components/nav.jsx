@@ -16,12 +16,12 @@ class Drop extends React.Component {
       open: false
 
       // preferences: [
-      // { preference: 'Vegetarian', marked: false }, 
-      // { preference: 'Vegan', marked: false }, 
-      // { preference: 'Dairy-Free', marked: false }, 
-      // { preference: 'Egg-Free', marked: false }, 
-      // { preference: 'Peanut-Free', marked: false }, 
-      // { preference: 'Alcohol-Free', marked: false }, 
+      // { preference: 'Vegetarian', marked: false },
+      // { preference: 'Vegan', marked: false },
+      // { preference: 'Dairy-Free', marked: false },
+      // { preference: 'Egg-Free', marked: false },
+      // { preference: 'Peanut-Free', marked: false },
+      // { preference: 'Alcohol-Free', marked: false },
       // { preference: 'Shellfish-Free', marked: false }, ]
     };
   }
@@ -44,7 +44,7 @@ class Drop extends React.Component {
           <div>
             <Well>
             {this.state.preferences.map((pref, index) => {
-              return (<Checkbox key={index} inline type="checkbox" onClick={() => this.markedPref(pref)}>{pref}</Checkbox>)
+              return (<Checkbox style={styles.dropBox} key={index} inline type="checkbox" onClick={() => this.markedPref(pref)}>{pref}</Checkbox>)
             })}
 {/*            <Well>
               <Checkbox inline type="checkbox">Vegetarian</Checkbox>
@@ -65,8 +65,10 @@ class Drop extends React.Component {
 
 let styles = {
   dropBox: {
+    width: '100%',
+    height: '75px',
     padding: '6px 10px',
-    fontSize: '12px'
+    fontSize: '35px'
   }
 }
 
