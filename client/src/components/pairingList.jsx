@@ -17,7 +17,7 @@ class PairingList extends React.Component {
         })
       }
       </div>
-    )
+    );
   }
 }
 

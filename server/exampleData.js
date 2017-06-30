@@ -1,4 +1,4 @@
-const exampleData = [{ 
+const wineData = [{ 
   name: 'Hall Eighteen Seventy-Three Cabernet Sauvignon 2013',
   url: 'http://www.wine.com/v6/Hall-Eighteen-Seventy-Three-Cabernet-Sauvignon-2013/wine/167260/Detail.aspx',
   labelUrl: 'http://cache.wine.com/labels/167260m.jpg',
@@ -80,4 +80,47 @@ const exampleData = [{
   price: 99.99 
 }];
 
-module.exports.exampleData = exampleData;
+const beerData = [{ name: '10* Farmers Pale Ale',
+  description: 'Collaboration with over 250 pounds of fresh local hops provided by 12 separate local farmers',
+  style: 'American Pale',
+  image: 'Not available' },
+{ name: 'Black Emperor',
+  description: 'How best to describe the Black Emperor? Black Pilsner? American Black Lager? Pseudo Schwarz? Whatever it is, its brewed with malt from New Zealand, Germany and England, hops from America and yeast from Germany. Dark, bitter and thirst quenching.',
+  style: 'Schwarzbier',
+  image: 'Not available' },
+{ name: 'Bogside Stout',
+  description: 'Not available',
+  style: 'Dry Irish Stout',
+  image: 'Not available' },
+{ name: 'Black Bombers in the Night',
+  description: 'Not available',
+  style: 'Schwarzbier',
+  image: 'Not available' },
+{ name: '3 Mile Marker Hefe Weizen',
+  description: 'Slightly cloudy yellow wheat Ale with off white head. Lite sweet banana flavor with a hint of clove on the front end. Lingering banana notes thru-out. Delicate mouth feel. Great served with a slice of Orange.',
+  style: 'Hefeweizen',
+  image: 'Not available' },
+{ name: 'Captain Stout',
+  description: 'The Captain is leader of a fire crew. This beer takes charge of your taste buds with its rich flavor. Roasty malt character that has hints of chocolate and coffee which balances the smooth, velvety finish. The thick, creamy head lasts and lasts, leaving lace in your glass as your beer disappears. This beer pairs well with food. Great with dinner or as breakfast or even with a rich vanilla-bean ice cream.',
+  style: 'Dry Irish Stout',
+  image: 'https://s3.amazonaws.com/brewerydbapi/beer/v06nJV/upload_GUi4R1-icon.png' },
+{ name: 'American Hefeweizen',
+  description: 'Our Hefeweizen is an unfiltered Ale that is brewed with the American Wheat Beer yeast strain that gives the beer its unique and distinctive banana like aroma and flavor.',
+  style: 'Hefeweizen',
+  image: 'Not available' },
+{ name: 'Breakside Irish Stout',
+  description: 'We’re very proud of this dark beer. A medal winner at both the Great American Beer Festival and the World Beer Cup, this stout is a showcase of roasted malt character. It features notes of coffee and chocolate in every sip. What’s amazing about this beer is how easy it is to drink. At under 4.5% ABV, this is a session stout that can refresh on a cool Fall day. The lower alcohol allows the grain flavors to shine, making it a food-friendly stout that can match a wide range of dishes. It’s as true an Irish stout as you’ll find anywhere in the United States today.\r\n\r\nAward-winning Irish-style stout. A flavorful, sessionable dark ale.',
+  style: 'Dry Irish Stout',
+  image: 'Not available' },
+{ name: 'Black Lager',
+  description: 'Not available',
+  style: 'Schwarzbier',
+  image: 'https://s3.amazonaws.com/brewerydbapi/beer/zOm5U0/upload_F1kG8v-icon.png' },
+{ name: '18 Hands Pale Ale',
+  description: 'A rustic Pale ale brewed with noble hops and Bastogne yeast.',
+  style: 'American Pale',
+  image: 'Not available' 
+}];
+
+module.exports.wineData = wineData;
+module.exports.beerData = beerData;

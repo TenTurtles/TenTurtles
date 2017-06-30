@@ -110,8 +110,6 @@ export default class Upload extends React.Component {
             </Dropzone>
           </div>
         </form>
-
-
         <div>
           <Modal show={this.state.imageScanned} onHide={this.close.bind(this)}>
             <Modal.Header closeButton>
@@ -128,12 +126,9 @@ export default class Upload extends React.Component {
             <Modal.Footer>
             </Modal.Footer>
           </Modal>
+        </div>
       </div>
-
-
-
-      </div>
-    )
+    );
   }
 }
 
@@ -149,5 +144,5 @@ let styles = {
   selectFoodBtn: {
     marginRight: '10px'
   }
-}
+};
 

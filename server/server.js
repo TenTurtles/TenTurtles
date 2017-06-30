@@ -18,7 +18,6 @@ app.use(bodyParser.json());
 
 app.post('/search', (req, res) => {
   let data = req.body;
-  // console.log('data ', data);
   query.apiQuery(data, res);
 });
 
@@ -44,11 +43,8 @@ app.post('/clarifai', (req, res) => {
     });
   })
   .then(imageText => {
-    // console.log(imageText);
     res.send(imageText);
-    // query.apiQuery({item: imageText[0]}, res);
   });
-
 });
 
 app.post('/favorite', (req, res) => {
@@ -71,7 +67,7 @@ app.post('/favorite', (req, res) => {
       }
     });
   }
-})
+});
 
 app.listen(3000, function() {
   console.log('Connection established.  Listening on port 3000!');

@@ -36,9 +36,8 @@ const apiQuery = (data, res) => {
   })
   .then(ingredients => {
     return Promise.map(ingredients, ingredient => {
-      // console.log('ingredient: ', ingredient);
       finalIngredients.push(ingredient);
-      return axios.post('http://138.68.58.133/pairing', {"ingredients": ingredient}).then(result => {
+      return axios.post('http://138.68.58.133/pairing', { "ingredients": ingredient }).then(result => {
         return result.data;
       });
     });
@@ -46,11 +45,11 @@ const apiQuery = (data, res) => {
   .then(wines => {
     // return Promise.map(wines, wineArray => {
     //   let random = Math.floor(Math.random() * (wineArray.length));
-    //   return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|100)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
+    //   return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|50)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
     //     return wine.refactor(result.data.Products.List);
     //   });
     // });
-    return exampleData.exampleData;
+    return exampleData.wineData;
   })
   .then(wines => {
     wines.map(wine => {
@@ -58,24 +57,22 @@ const apiQuery = (data, res) => {
     });
   })
   .then(() => {
-    // finalIngredients is ingredient list query beer pairing API and berwery db for beer pairings
-    // output should be 10 beers with information that corresponse to the ingredeient list that was query.
-    // when finished, push output to finalResult.finalBeer
-    // reference line 55
-    //output array of 10 object 
     return Promise.map(finalIngredients, array => {
-      return axios.post('http://138.68.58.133/beerpairing', {"ingredients": array}).then(result => {
-        return result.data;
-      });
+      return axios.post('http://138.68.58.133/beerpairing', { "ingredients": array })
+        .then(result => {
+          console.log('result: ', result.data);
+          return result.data;
+        });
     });
   })
   .then(beerIds => {
-    return Promise.map(beerIds, beerId => {
-      let random = Math.floor(Math.random() * (beerId.length));
-      return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
-        return beer.refactor(result.data.data);
-      });
-    });
+    // return Promise.map(beerIds, beerId => {
+    //   let random = Math.floor(Math.random() * (beerId.length));
+    //   return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
+    //     return beer.refactor(result.data.data);
+    //   });
+    // });
+    return exampleData.beerData;
   })
   .then(beers => {
     beers.map(beer => {

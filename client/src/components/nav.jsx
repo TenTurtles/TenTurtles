@@ -41,7 +41,7 @@ class Drop extends React.Component {
           </div>
         </Collapse>
       </div>
-    )
+    );
   }
 }
 
