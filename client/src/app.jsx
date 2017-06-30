@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FormControl, Button, Grid, Row, Col, Image } from 'react-bootstrap';
+import { FormControl, Button, Grid, Row, Col, Image, Carousel } from 'react-bootstrap';
 import $ from 'jquery';
 import Drop from './components/nav.jsx';
 import Upload from './components/upload.jsx';
 import PairingList from './components/pairingList.jsx';
+import ImageCarousel from './components/imageCarousel.jsx';
 const prefHelper = require('../../server/preferenceRefactor');
 
 
@@ -18,7 +19,8 @@ class App extends React.Component {
         finalRecipes: [],
         finalWines: [],
         finalBeers: []
-      }
+      },
+      images: []
     };
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -50,6 +52,19 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+      $.ajax({
+        url: '/images',
+        method: 'GET',
+        success: data => {
+          console.log('client side images: ', data);
+          this.setState({
+            images: data
+          });
+        }
+      })
+  }
+
   setPairings(data) {
     this.setState({
       pairs: data
@@ -68,10 +83,10 @@ class App extends React.Component {
       <Grid style={styles.container}>
         <h1 style={styles.h1}>🍷🍅🍉🍊🍌🍍🍺🍲🍦</h1>
         <Row>
-          <form style={styles.form}>
             <Col xs={2}>
               <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
             </Col>
+          <form style={styles.form}>
             <Col xs={9}>
               <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
             </Col>
@@ -87,6 +102,14 @@ class App extends React.Component {
           <Col xs={12}>
             <Drop handlePreferences={this.handlePref.bind(this)}/>
           </Col>
+
+        </Row>
+
+        <hr />
+
+        <Row>
+
+          <ImageCarousel images={this.state.images} />
 
         </Row>
 
