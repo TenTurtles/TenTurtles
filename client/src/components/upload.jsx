@@ -106,7 +106,7 @@ export default class Upload extends React.Component {
               multiple={false}
               accept="image/*"
               onDrop={this.onImageDrop.bind(this)}>
-              <p>tap or click to search an image</p>
+              <img style={styles.image} src="http://shepherdandwhite.co.uk/assets/shared/img/noimg.png"></img>
             </Dropzone>
           </div>
         </form>
@@ -133,13 +133,12 @@ export default class Upload extends React.Component {
 }
 
 let styles = {
+  image: {
+    height: '100%',
+  },
   dropzone: {
-    fontSize: '35px',
-    width : '100%',
+    width : '75',
     height : '75px',
-    marginBottom : '10px',
-    border : '1px dashed black',
-    textAlign : 'center'
   },
   selectFoodBtn: {
     marginRight: '10px'

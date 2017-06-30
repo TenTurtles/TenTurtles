@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Image, Modal, Button, ListGroup, ListGroupItem, Accordion, Panel } from 'react-bootstrap';
+import { Grid, Row, Col, Image, Modal, Button, ListGroup, ListGroupItem, Accordion, Panel, Media} from 'react-bootstrap';
 
 import $ from 'jquery';
 
@@ -8,27 +8,8 @@ class pairingListEntry extends React.Component {
     super(props);
     this.state = {
       open: false,
-      showModal: false,
       favorite: false
     };
-  }
-
-  getInitialState() {
-    return {
-      showModal: false
-    };
-  }
-
-  close() {
-    this.setState({
-      showModal: false
-    });
-  }
-
-  open() {
-    this.setState({
-      showModal: true
-    });
   }
 
   favorite(pairing) {
@@ -54,11 +35,12 @@ class pairingListEntry extends React.Component {
   }
 
   render() {
+    console.log('pair: ', this.props.pair);
     return (
       <Accordion>
         <Panel header={
           <Grid style={styles.container}>
-            <Row onClick={this.open.bind(this)}>
+            <Row >
               <Col xs={5}>
                 <Image style={styles.thumbnail} src={this.props.pair[0].image} rounded />
               </Col>
@@ -68,6 +50,9 @@ class pairingListEntry extends React.Component {
                 </Row>
                 <Row style={styles.drinkName}>
                   {this.props.pair[1][0].name}
+                </Row>
+                <Row style={styles.drinkName}>
+                  {this.props.pair[2][0].name}
                 </Row>
               </Col>
             </Row>
@@ -110,6 +95,23 @@ class pairingListEntry extends React.Component {
                 </ListGroup>
               </Col>
             </Row>
+
+            <hr />
+
+            <h2><a href={this.props.pair[2][0].url}>{this.props.pair[2][0].name}</a></h2>
+
+            <Row>
+              <Col xs={3}>
+                <Image style={styles.block} src={this.props.pair[2][0].image} rounded />
+              </Col>
+              <Col xs={9}>
+                <ListGroup style={styles.listGroup}>
+                  <p><span style={styles.bold}>Style: </span>{this.props.pair[2][0].style}</p>
+                  <p><span style={styles.bold}>Description: </span>{this.props.pair[2][0].description}</p>
+                </ListGroup>
+              </Col>
+            </Row>
+
           </Grid>
         </Panel>
       </Accordion>
@@ -124,9 +126,6 @@ let styles = {
     width: '100%',
     padding: '10px'
   },
-  bottomBorder: {
-    bottomBorder: '1px solid black'
-  },
   listGroup: {
     verticalAlign: 'center',
     fontSize: '25px',
@@ -135,6 +134,7 @@ let styles = {
     border: '1px dashed black'
   },
   recipeName: {
+    textDecoration: 'none',
     fontWeight: 'bold',
     fontSize: '36px'
   },
@@ -158,9 +158,6 @@ let styles = {
   },
   italics: {
     fontStyle: 'italic'
-  },
-  smallFont: {
-    fontSize: '10px'
   },
   favorite: {
     backgroundColor: '#ff0000',
