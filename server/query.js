@@ -66,13 +66,13 @@ const apiQuery = (data, res) => {
     });
   })
   .then(beerIds => {
-    // return Promise.map(beerIds, beerId => {
-    //   let random = Math.floor(Math.random() * (beerId.length));
-    //   return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
-    //     return beer.refactor(result.data.data);
-    //   });
-    // });
-    return exampleData.beerData;
+    return Promise.map(beerIds, beerId => {
+      let random = Math.floor(Math.random() * (beerId.length));
+      return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
+        return beer.refactor(result.data.data);
+      });
+    });
+    // return exampleData.beerData;
   })
   .then(beers => {
     beers.map(beer => {
