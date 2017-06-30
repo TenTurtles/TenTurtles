@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/favorites');
 
 let db = mongoose.connection;
 
