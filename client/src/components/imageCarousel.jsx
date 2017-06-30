@@ -10,9 +10,9 @@ class ImageCarousel extends React.Component {
     return (
       <Carousel>
         {
-          this.props.images.map(image => {
+          this.props.images.map((image, i) => {
             return (
-              <Carousel.Item>
+              <Carousel.Item key={i}>
                 <img width={840} height={384} alt="900x500" src={image}/>
               </Carousel.Item>
             )

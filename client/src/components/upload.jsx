@@ -35,7 +35,6 @@ export default class Upload extends React.Component {
         choices: prefHelper.preferences(this.props.preferences) || null
       },
       success: data => {
-        console.log('success', data);
         this.props.setPairings(data);
       }
     });
@@ -46,7 +45,6 @@ export default class Upload extends React.Component {
   }
 
   handleChange(e, food) {
-    console.log('handleChange e: ', e.target.value);
     this.setState({ selectedImage: e.target.value }, this.close);
 
   }

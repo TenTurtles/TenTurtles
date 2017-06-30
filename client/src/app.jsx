@@ -35,9 +35,7 @@ class App extends React.Component {
 
   search(e) {
     e.preventDefault();
-    console.log('click');
     let passPref = prefHelper.preferences(this.state.prefer);
-    console.log('passPref', passPref);
     $.ajax({
       url: '/search',
       method: 'POST',
@@ -46,7 +44,6 @@ class App extends React.Component {
         choices: passPref || null
       },
       success: data => {
-        console.log('success', data);
         this.setPairings(data);
       }
     });
@@ -57,7 +54,6 @@ class App extends React.Component {
         url: '/images',
         method: 'GET',
         success: data => {
-          console.log('client side images: ', data);
           this.setState({
             images: data
           });
@@ -72,7 +68,6 @@ class App extends React.Component {
   }
 
   handlePref(childState) {
-    console.log('working appjsx');
     this.setState({
       prefer: childState
     });

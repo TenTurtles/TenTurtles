@@ -14,7 +14,6 @@ class pairingListEntry extends React.Component {
 
   favorite(pairing) {
     let that = this;
-    console.log(that.state.favorite);
     $.ajax({
       url: '/favorite',
       method: 'POST',
@@ -23,7 +22,6 @@ class pairingListEntry extends React.Component {
         favorite: that.state.favorite
       },
       success: (result) => {
-        console.log('result', result);
         that.setState({
           favorite: !that.state.favorite
         });
@@ -35,7 +33,6 @@ class pairingListEntry extends React.Component {
   }
 
   render() {
-    console.log('pair: ', this.props.pair);
     return (
       <Accordion>
         <Panel header={

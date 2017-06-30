@@ -19,7 +19,6 @@ class Drop extends React.Component {
 
   markedPref(pref) {
     let selected = pref;
-    console.log('checkbox click works', this.state[selected]);
     let obj = {};
     obj[selected] = !this.state[selected];
     this.setState(obj, () => {this.props.handlePreferences(this.state)});
