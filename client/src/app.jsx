@@ -86,7 +86,7 @@ class App extends React.Component {
             <Col xs={2}>
               <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
             </Col>
-          <form style={styles.form}>
+            <form style={styles.form}>
             <Col xs={9}>
               <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
             </Col>
@@ -94,6 +94,23 @@ class App extends React.Component {
               <input src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-hi.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
             </Col>
           </form>
+        </Row>
+
+        <br />
+
+        <Row>
+          <Col xs={12}>
+            <Drop handlePreferences={this.handlePref.bind(this)}/>
+          </Col>
+
+        </Row>
+
+        <hr />
+
+        <Row>
+
+          <ImageCarousel images={this.state.images} />
+
         </Row>
 
         <br />
