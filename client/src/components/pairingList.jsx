@@ -13,7 +13,7 @@ class PairingList extends React.Component {
       <div>
       {
         pairings.map((pair, index) => {
-          return <PairingListEntry key={index} pair={pair} />
+          return <PairingListEntry key={index} pair={pair}/>
         })
       }
       </div>

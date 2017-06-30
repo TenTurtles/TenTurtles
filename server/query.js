@@ -3,6 +3,7 @@ const Promise = require('bluebird');
 const request = Promise.promisify(require('request'));
 const recipe = require('./recipeRefactor.js');
 const wine = require('./wineRefactor.js');
+const beer = require('./beerRefactor.js');
 const api = require('./config.js');
 const axios = require('axios');
 const exampleData = require('./exampleData.js');
@@ -61,6 +62,25 @@ const apiQuery = (data, res) => {
     // output should be 10 beers with information that corresponse to the ingredeient list that was query.
     // when finished, push output to finalResult.finalBeer
     // reference line 55
+    //output array of 10 object 
+    return Promise.map(finalIngredients, array => {
+      return axios.post('http://138.68.58.133/beerpairing', {"ingredients": array}).then(result => {
+        return result.data;
+      });
+    });
+  })
+  .then(beerIds => {
+    return Promise.map(beerIds, beerId => {
+      let random = Math.floor(Math.random() * (beerId.length));
+      return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
+        return beer.refactor(result.data.data);
+      });
+    });
+  })
+  .then(beers => {
+    beers.map(beer => {
+      finalResults.finalBeers.push([beer]);
+    });
   })
   .then( () => {
     res.send(finalResults);

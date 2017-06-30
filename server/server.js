@@ -8,6 +8,7 @@ const api = require('./config.js');
 const axios = require('axios');
 const Clarifai = require('clarifai');
 const query = require('./query.js');
+const db = require('../database/schema.js');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 
 app.post('/search', (req, res) => {
   let data = req.body;
-  console.log('data ', data);
+  // console.log('data ', data);
   query.apiQuery(data, res);
 });
 
@@ -49,6 +50,28 @@ app.post('/clarifai', (req, res) => {
   });
 
 });
+
+app.post('/favorite', (req, res) => {
+  let saved = JSON.stringify(req.body.pair);
+  let bool = JSON.parse(req.body.favorite);
+  if (!bool) {
+    let promise = Promise.resolve(saved);
+    promise.then((pairing) => {
+      var recipe = new db.Favorite({ finalRecipe: pairing });
+      recipe.save();
+    }).then(() => {
+      res.send('yes it was created!');
+    });
+  } else {
+    db.Favorite.remove({ finalRecipe: saved }, (err, results) => {
+      if (err) {
+        console.log('remove failed');
+      } else {
+        res.send('favorite removed');
+      }
+    });
+  }
+})
 
 app.listen(3000, function() {
   console.log('Connection established.  Listening on port 3000!');

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Grid, Row, Col, Image, Modal, Button, ListGroup, ListGroupItem, Accordion, Panel } from 'react-bootstrap';
 
+import $ from 'jquery';
+
 class pairingListEntry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      showModal: false
+      showModal: false,
+      favorite: false
     };
   }
 
@@ -26,6 +29,32 @@ class pairingListEntry extends React.Component {
     this.setState({
       showModal: true
     });
+  }
+
+  favorite(pairing) {
+    let that = this;
+    // console.log(pairing);
+    // this.setState({
+    //   favorite: !this.state.favorite
+    // }, () => console.log(this.state.favorite));
+    console.log(that.state.favorite);
+    $.ajax({
+      url: '/favorite',
+      method: 'POST',
+      data: {
+        pair: pairing,
+        favorite: that.state.favorite
+      },
+      success: (result) => {
+        console.log('result', result);
+        that.setState({
+          favorite: !that.state.favorite
+        })
+      },
+      error: (error) => {
+        console.log('error', error);
+      }
+    })
   }
 
   render() {
@@ -50,7 +79,8 @@ class pairingListEntry extends React.Component {
         } eventKey="1">
           <Grid style={styles.container}>
 
-            <h2><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></h2>
+            <h2 style={styles.h2} ><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></h2>
+            <button style={this.state.favorite ? styles.favorite : styles.unfavorite} onClick={this.favorite.bind(this, this.props.pair)}> Favorite </button>
 
             <Row>
               <Col xs={12}>
@@ -138,6 +168,18 @@ let styles = {
   },
   smallFont: {
     fontSize: '10px'
+  },
+  favorite: {
+    backgroundColor: '#ff0000',
+    float: 'right',
+    color: 'white'
+  },
+  unfavorite: {
+    backgroundColor: '#c4c3c2',
+    float: 'right'
+  },
+  h2: {
+    float: 'left'
   }
 }
         // <Row onClick={this.open.bind(this)}>
