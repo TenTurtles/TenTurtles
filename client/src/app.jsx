@@ -86,7 +86,7 @@ class App extends React.Component {
             <Col xs={2}>
               <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
             </Col>
-          <form style={styles.form}>
+            <form style={styles.form}>
             <Col xs={9}>
               <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
             </Col>

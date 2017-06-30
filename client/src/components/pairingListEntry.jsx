@@ -77,37 +77,40 @@ class pairingListEntry extends React.Component {
 
             <hr />
 
-            <h2><a href={this.props.pair[1][0].url}>{this.props.pair[1][0].name}</a></h2>
-
+            <h2 style={styles.h2Logo}><a href={this.props.pair[1][0].url}>{this.props.pair[1][0].name}</a></h2>
+            {/*wine section*/}
             <Row>
-              <Col xs={3}>
+              <Col xs={3} style={{height: '240px'}}>
                 <Image style={styles.block} src={this.props.pair[1][0].labelUrl} rounded />
+                <hr />
                 <a href="http://www.wine.com/" title="Wine.com the destination for Wine and Wine Gifts">
-                  <img src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" />
+                  <img style={styles.logo} src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" />
                 </a>
               </Col>
               <Col xs={9}>
                 <ListGroup style={styles.listGroup}>
-                  <p><span style={styles.bold}>Varietal: </span>{this.props.pair[1][0].type}</p>
-                  <p><span style={styles.bold}>Region: </span>{this.props.pair[1][0].region}</p>
-                  <p><span style={styles.bold}>Rating: </span>{this.props.pair[1][0].rating}</p>
-                  <p><span style={styles.bold}>Price: </span>${this.props.pair[1][0].price}</p>
+                  <p style={styles.p}><span style={styles.bold}>Varietal: </span>{this.props.pair[1][0].type}</p>
+                  <p style={styles.p}><span style={styles.bold}>Region: </span>{this.props.pair[1][0].region}</p>
+                  <p style={styles.p}><span style={styles.bold}>Rating: </span>{this.props.pair[1][0].rating}</p>
+                  <p style={styles.p}><span style={styles.bold}>Price: </span>${this.props.pair[1][0].price}</p>
                 </ListGroup>
               </Col>
             </Row>
 
             <hr />
-
-            <h2><a href={this.props.pair[2][0].url}>{this.props.pair[2][0].name}</a></h2>
+            {/*beer section*/}
+            <h2 style={styles.h2Logo}><a href={this.props.pair[2][0].url}>{this.props.pair[2][0].name}</a></h2>
 
             <Row>
-              <Col xs={3}>
+              <Col xs={3} style={{height: '240px'}}>
                 <Image style={styles.block} src={this.props.pair[2][0].image} rounded />
+                <hr />
+                <img style={styles.logo} src="http://s3.amazonaws.com/brewerydb/Powered-By-BreweryDB.png" alt="The BreweryDB API is owned by BreweryDB" />
               </Col>
               <Col xs={9}>
                 <ListGroup style={styles.listGroup}>
-                  <p><span style={styles.bold}>Style: </span>{this.props.pair[2][0].style}</p>
-                  <p><span style={styles.bold}>Description: </span>{this.props.pair[2][0].description}</p>
+                  <p style={styles.p}><span style={styles.bold}>Style: </span>{this.props.pair[2][0].style}</p>
+                  <p style={styles.p}><span style={styles.bold}>Description: </span>{this.props.pair[2][0].description}</p>
                 </ListGroup>
               </Col>
             </Row>
@@ -128,10 +131,14 @@ let styles = {
   },
   listGroup: {
     verticalAlign: 'center',
-    fontSize: '25px',
+    fontSize: '24px',
     marginRight: '10px',
     padding: '30px',
-    border: '1px dashed black'
+    border: 'outset'
+  },
+  p: {
+    fontSize: '24px',
+    marginBottom: '13px'
   },
   recipeName: {
     textDecoration: 'none',
@@ -139,8 +146,8 @@ let styles = {
     fontSize: '36px'
   },
   drinkName: {
-    fontStyle: 'italics',
-    fontSize: '36px'
+    fontStyle: 'italic',
+    fontSize: '26px'
   },
   thumbnail: {
     height: '200px',
@@ -151,10 +158,14 @@ let styles = {
     width: 'auto'
   },
   block: {
-    display: 'block'
+    display: 'block',
+    marginLeft: '30px',
+    height: '125px',
+    marginTop: '30px'
   },
   bold: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: '24px'
   },
   italics: {
     fontStyle: 'italic'
@@ -163,7 +174,12 @@ let styles = {
     fontSize: '10px'
   },
   h2: {
-    float: 'left'
+    float: 'left',
+    padding: '0 30px 15px'
+  },
+  h2Logo: {
+    fontSize: '30px',
+    padding: '15px 0 15px 30px'
   },
   favorite: {
     float: 'right',
@@ -174,5 +190,9 @@ let styles = {
     backgroundSize: 'contain',
     fontSize: '35px',
     border: 'none'
+  },
+  logo: {
+    height: '25px',
+    marginLeft: '40px'
   }
 };
