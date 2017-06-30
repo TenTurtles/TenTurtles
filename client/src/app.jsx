@@ -108,23 +108,6 @@ class App extends React.Component {
 
         </Row>
 
-        <br />
-
-        <Row>
-          <Col xs={12}>
-            <Drop handlePreferences={this.handlePref.bind(this)}/>
-          </Col>
-
-        </Row>
-
-        <hr />
-
-        <Row>
-
-          <ImageCarousel images={this.state.images} />
-
-        </Row>
-
         <hr />
 
         <Row>
