@@ -18,7 +18,8 @@ let favoriteSchema = mongoose.Schema({
 });
 
 let imageSchema = mongoose.Schema({
-  url: String
+  url: String,
+  caption: String
 });
 
 

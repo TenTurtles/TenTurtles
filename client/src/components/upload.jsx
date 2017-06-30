@@ -32,7 +32,8 @@ export default class Upload extends React.Component {
       method: 'POST',
       data: {
         item: this.state.selectedImage,
-        choices: prefHelper.preferences(this.props.preferences) || null
+        choices: prefHelper.preferences(this.props.preferences) || null,
+        url: this.state.uploadedFileCloudinaryUrl
       },
       success: data => {
         this.props.setPairings(data);
@@ -77,11 +78,13 @@ export default class Upload extends React.Component {
   }
 
   clarifai() {
+    console.log('selected image: ', this.state.selectedImage);
     $.ajax({
       url: '/clarifai',
       method: 'POST',
       data: {
-        url: this.state.uploadedFileCloudinaryUrl
+        url: this.state.uploadedFileCloudinaryUrl,
+        caption: this.state.selectedImage
       },
       success: result => {
         this.setState({
@@ -116,7 +119,7 @@ export default class Upload extends React.Component {
             <Modal.Body>
               <h4>Select the food in the picture</h4>
                   {
-                    this.state.imageScanResults.slice(0,10).map((food, i) => {
+                    this.state.imageScanResults.slice(0,15).map((food, i) => {
                       return <Button style={styles.selectFoodBtn} bsSize="large" key={i} onClick={this.handleChange.bind(this)} value={food}>{food}</Button>
                     })
                   }
