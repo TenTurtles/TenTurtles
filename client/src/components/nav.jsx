@@ -14,15 +14,6 @@ class Drop extends React.Component {
       'shellfish-free': false,
       preferences: ['vegetarian', 'vegan', 'dairy-free', 'egg-free', 'peanut-free', 'alcohol-free', 'shellfish-free'],
       open: false
-
-      // preferences: [
-      // { preference: 'Vegetarian', marked: false },
-      // { preference: 'Vegan', marked: false },
-      // { preference: 'Dairy-Free', marked: false },
-      // { preference: 'Egg-Free', marked: false },
-      // { preference: 'Peanut-Free', marked: false },
-      // { preference: 'Alcohol-Free', marked: false },
-      // { preference: 'Shellfish-Free', marked: false }, ]
     };
   }
 
@@ -46,15 +37,6 @@ class Drop extends React.Component {
             {this.state.preferences.map((pref, index) => {
               return (<Checkbox style={styles.dropBox} key={index} inline type="checkbox" onClick={() => this.markedPref(pref)}>{pref}</Checkbox>)
             })}
-{/*            <Well>
-              <Checkbox inline type="checkbox">Vegetarian</Checkbox>
-              <Checkbox inline type="checkbox">Vegan</Checkbox>
-              <Checkbox inline type="checkbox">Dairy-Free</Checkbox>
-              <Checkbox inline type="checkbox">Egg-Free</Checkbox>
-              <Checkbox inline type="checkbox">Peanut-Free</Checkbox>
-              <Checkbox inline type="checkbox">Alcohol-Free</Checkbox>
-              <Checkbox inline type="checkbox">Shellfish-Free</Checkbox>
-            </Well>*/}
             </Well>
           </div>
         </Collapse>

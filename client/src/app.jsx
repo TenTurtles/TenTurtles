@@ -5,6 +5,7 @@ import $ from 'jquery';
 import Drop from './components/nav.jsx';
 import Upload from './components/upload.jsx';
 import PairingList from './components/pairingList.jsx';
+const prefHelper = require('../../server/preferenceRefactor');
 
 
 class App extends React.Component {
@@ -31,15 +32,7 @@ class App extends React.Component {
   search(e) {
     e.preventDefault();
     console.log('click');
-    let passPref = [];
-    for (let key in this.state.prefer) {
-      if (key !== 'open' && key !== 'preferences') {
-        console.log('true or false', this.state.prefer[key]);
-        if (this.state.prefer[key] === true) {
-          passPref.push(key);
-        }
-      }
-    }
+    let passPref = prefHelper.preferences(this.state.prefer);
     console.log('passPref', passPref);
     $.ajax({
       url: '/search',
@@ -65,14 +58,14 @@ class App extends React.Component {
     console.log('working appjsx');
     this.setState({
       prefer: childState
-    }, () => {console.log(this.state)});
+    });
   }
 
   render() {
     return (
       <Grid style={styles.container}>
         <h1 style={styles.h1}>PAIRED</h1>
-        <Upload setPairings={this.setPairings.bind(this)}/>
+        <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
         <Drop handlePreferences={this.handlePref.bind(this)}/>
         <hr />
         <form style={styles.form}>
