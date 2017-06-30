@@ -60,7 +60,7 @@ class pairingListEntry extends React.Component {
         } eventKey="1">
           <Grid style={styles.container}>
             <h2 style={styles.h2} ><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></h2>
-            <button style={this.state.favorite ? styles.favorite : styles.unfavorite} onClick={this.favorite.bind(this, this.props.pair)}> Favorite </button>
+            <Image src={this.state.favorite ? "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/2000px-Love_Heart_SVG.svg.png" : "http://www.smfpl.org/files/images/broken%20heart.png"} style={styles.favorite} onClick={this.favorite.bind(this, this.props.pair)}></Image>
             <Row>
               <Col xs={12}>
                 <ListGroup style={styles.listGroup}>
@@ -159,16 +159,20 @@ let styles = {
   italics: {
     fontStyle: 'italic'
   },
-  favorite: {
-    backgroundColor: '#ff0000',
-    float: 'right',
-    color: 'white'
-  },
-  unfavorite: {
-    backgroundColor: '#c4c3c2',
-    float: 'right'
+  smallFont: {
+    fontSize: '10px'
   },
   h2: {
     float: 'left'
+  },
+  favorite: {
+    float: 'right',
+    height: '50px',
+    width: '50px',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    fontSize: '35px',
+    border: 'none'
   }
 };
