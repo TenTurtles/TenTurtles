@@ -118,7 +118,7 @@ export default class Upload extends React.Component {
             <Modal.Body>
               <h4>Select the food in the picture</h4>
                   {
-                    this.state.imageScanResults.slice(0,5).map((food, i) => {
+                    this.state.imageScanResults.slice(0,10).map((food, i) => {
                       return <Button style={styles.selectFoodBtn} bsSize="large" key={i} onClick={this.handleChange.bind(this)} value={food}>{food}</Button>
                     })
                   }
@@ -141,7 +141,8 @@ let styles = {
     height : '75px',
   },
   selectFoodBtn: {
-    marginRight: '10px'
+    margin: '5px',
+
   }
 };
 

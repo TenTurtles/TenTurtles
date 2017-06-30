@@ -130,7 +130,7 @@ let styles = {
     verticalAlign: 'center',
     fontSize: '25px',
     marginRight: '10px',
-    padding: '5px',
+    padding: '30px',
     border: '1px dashed black'
   },
   recipeName: {
