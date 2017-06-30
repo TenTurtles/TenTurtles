@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FormControl, Button, Grid } from 'react-bootstrap';
+import { FormControl, Button, Grid, Row, Col, Image } from 'react-bootstrap';
 import $ from 'jquery';
 import Drop from './components/nav.jsx';
 import Upload from './components/upload.jsx';
@@ -16,7 +16,8 @@ class App extends React.Component {
       prefer: '',
       pairs: {
         finalRecipes: [],
-        finalWines: []
+        finalWines: [],
+        finalBeers: []
       }
     };
     this.search = this.search.bind(this);
@@ -24,6 +25,7 @@ class App extends React.Component {
   }
 
   handleChange(event) {
+    event.preventDefault();
     this.setState({
       item: event.target.value
     });
@@ -65,14 +67,36 @@ class App extends React.Component {
     return (
       <Grid style={styles.container}>
         <h1 style={styles.h1}>PAIRED</h1>
-        <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
-        <Drop handlePreferences={this.handlePref.bind(this)}/>
+        <Row>
+          <Col xs={2}>
+            <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
+          </Col>
+          <Col xs={10}>
+            <Drop handlePreferences={this.handlePref.bind(this)}/>
+          </Col>
+        </Row>
+
+        <br />
+
+        <Row>
+          <form style={styles.form}>
+            <Col xs={10}>
+              <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
+            </Col>
+            <Col xs={2}>
+              <input src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-hi.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
+            </Col>
+          </form>
+        </Row>
+
         <hr />
-        <form style={styles.form}>
-          <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
-          <Button style={styles.inputBox} type="submit" bsSize="large" onClick={this.search}>Submit</Button>
-        </form>
-        <PairingList pairs={this.state.pairs} />
+
+        <Row>
+          <Col xs={12}>
+            <PairingList pairs={this.state.pairs} />
+          </Col>
+        </Row>
+
       </Grid>
     )
   }
@@ -88,15 +112,17 @@ let styles = {
     padding: '10px',
   },
   form: {
-    padding: '10px'
   },
   inputBox: {
     fontSize: '35px',
-    marginTop: '10px',
-    display: 'inline-block',
+    marginRight: '10px',
     width: '100%',
     height: '75px'
-
+  },
+  inputBtn: {
+    marginLeft: '22px',
+    width: '75px',
+    height: '75px'
   }
 };
 

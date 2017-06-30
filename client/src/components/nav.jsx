@@ -28,14 +28,14 @@ class Drop extends React.Component {
   render() {
     return (
       <div>
-        <Button style={styles.dropBox} onClick={ () => this.setState({ open: !this.state.open })}>
-          preferences
+        <Button bsStyle="default" style={styles.dropBox} onClick={ () => this.setState({ open: !this.state.open })}>
+          Dietary Restrictions
         </Button>
         <Collapse in={this.state.open}>
           <div>
             <Well>
             {this.state.preferences.map((pref, index) => {
-              return (<Checkbox style={styles.dropBox} key={index} inline type="checkbox" onClick={() => this.markedPref(pref)}>{pref}</Checkbox>)
+              return (<Button style={styles.btn} bsSize="large" bsStyle={this.state[pref] ? 'primary' : 'default'}key={index} value={pref} onClick={() => this.markedPref(pref)}>{pref}</Button>)
             })}
             </Well>
           </div>
@@ -46,11 +46,15 @@ class Drop extends React.Component {
 }
 
 let styles = {
+  btn: {
+    margin: '5px'
+  },
   dropBox: {
+    display: 'inline-block',
     width: '100%',
     height: '75px',
     padding: '6px 10px',
-    fontSize: '35px'
+    fontSize: '25px'
   }
 }
 
