@@ -69,6 +69,7 @@ const apiQuery = (data, res) => {
     // return Promise.map(beerIds, beerId => {
     //   let random = Math.floor(Math.random() * (beerId.length));
     //   return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
+    //     console.log(result.data.data);
     //     return beer.refactor(result.data.data);
     //   });
     // });

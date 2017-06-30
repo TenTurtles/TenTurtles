@@ -17,6 +17,13 @@ let favoriteSchema = mongoose.Schema({
   finalRecipe: String
 });
 
+let imageSchema = mongoose.Schema({
+  url: String
+});
+
+
 let Favorite = mongoose.model('Favorite', favoriteSchema);
+let Image = mongoose.model('Image', imageSchema);
 
 module.exports.Favorite = Favorite;
+module.exports.Image = Image;

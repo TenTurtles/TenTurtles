@@ -35,7 +35,6 @@ export default class Upload extends React.Component {
         choices: prefHelper.preferences(this.props.preferences) || null
       },
       success: data => {
-        console.log('success', data);
         this.props.setPairings(data);
       }
     });
@@ -46,7 +45,6 @@ export default class Upload extends React.Component {
   }
 
   handleChange(e, food) {
-    console.log('handleChange e: ', e.target.value);
     this.setState({ selectedImage: e.target.value }, this.close);
 
   }
@@ -118,7 +116,7 @@ export default class Upload extends React.Component {
             <Modal.Body>
               <h4>Select the food in the picture</h4>
                   {
-                    this.state.imageScanResults.slice(0,5).map((food, i) => {
+                    this.state.imageScanResults.slice(0,10).map((food, i) => {
                       return <Button style={styles.selectFoodBtn} bsSize="large" key={i} onClick={this.handleChange.bind(this)} value={food}>{food}</Button>
                     })
                   }
@@ -137,11 +135,12 @@ let styles = {
     height: '100%',
   },
   dropzone: {
-    width : '75',
+    width : '75px',
     height : '75px',
   },
   selectFoodBtn: {
-    marginRight: '10px'
+    margin: '5px',
+
   }
 };
 

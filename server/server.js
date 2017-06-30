@@ -9,6 +9,7 @@ const axios = require('axios');
 const Clarifai = require('clarifai');
 const query = require('./query.js');
 const db = require('../database/schema.js');
+const _ = require('underscore');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.post('/search', (req, res) => {
 app.post('/clarifai', (req, res) => {
   console.log(req.body);
   let imageUrl = req.body.url;
+  new db.Image({url: imageUrl}).save()
   const clarifai = new Clarifai.App({
     apiKey: api.clarifai_key
   });
@@ -68,6 +70,15 @@ app.post('/favorite', (req, res) => {
     });
   }
 });
+
+app.get('/images', (req, res) => {
+  let images = db.Image.find().then(results => {
+    console.log('images: ', results);
+    let urls = _.pluck(results, 'url');
+    res.send(urls);
+
+  });
+})
 
 app.listen(3000, function() {
   console.log('Connection established.  Listening on port 3000!');
