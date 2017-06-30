@@ -66,27 +66,28 @@ class App extends React.Component {
   render() {
     return (
       <Grid style={styles.container}>
-        <h1 style={styles.h1}>PAIRED</h1>
+        <h1 style={styles.h1}>🍷🍅🍉🍊🍌🍍🍺🍲🍦</h1>
         <Row>
-          <Col xs={2}>
-            <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
-          </Col>
-          <Col xs={10}>
-            <Drop handlePreferences={this.handlePref.bind(this)}/>
-          </Col>
+          <form style={styles.form}>
+            <Col xs={2}>
+              <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
+            </Col>
+            <Col xs={9}>
+              <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
+            </Col>
+            <Col xs={1}>
+              <input src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-hi.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
+            </Col>
+          </form>
         </Row>
 
         <br />
 
         <Row>
-          <form style={styles.form}>
-            <Col xs={10}>
-              <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
-            </Col>
-            <Col xs={2}>
-              <input src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-hi.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
-            </Col>
-          </form>
+          <Col xs={12}>
+            <Drop handlePreferences={this.handlePref.bind(this)}/>
+          </Col>
+
         </Row>
 
         <hr />
@@ -104,7 +105,7 @@ class App extends React.Component {
 
 let styles = {
   h1: {
-    fontSize: '55px',
+    fontSize: '85px',
     textAlign: 'center'
   },
   container: {
@@ -115,12 +116,12 @@ let styles = {
   },
   inputBox: {
     fontSize: '35px',
-    marginRight: '10px',
+    marginLeft: '-35px',
     width: '100%',
     height: '75px'
   },
   inputBtn: {
-    marginLeft: '22px',
+    marginLeft: '-30px',
     width: '75px',
     height: '75px'
   }

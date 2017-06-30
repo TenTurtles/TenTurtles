@@ -137,7 +137,7 @@ let styles = {
     height: '100%',
   },
   dropzone: {
-    width : '75',
+    width : '75px',
     height : '75px',
   },
   selectFoodBtn: {
