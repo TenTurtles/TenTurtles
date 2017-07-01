@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 app.post('/search', (req, res) => {
   let data = req.body;
+  new db.Image({url: data.url, caption: data.item}).save()
   query.apiQuery(data, res);
 });
 
