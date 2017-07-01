@@ -66,11 +66,15 @@ export default class Upload extends React.Component {
   }
 
   handleChange(e, food) {
-    setTimeout(function(){ this.setState({ percentage: 25 }) }.bind(this), 0);
+    setTimeout(function(){ this.setState({ percentage: 10 }) }.bind(this), 0);
+    setTimeout(function(){ this.handlePercentage() }.bind(this), 500);
+    setTimeout(function(){ this.setState({ percentage: 25 }) }.bind(this), 501);
     setTimeout(function(){ this.handlePercentage() }.bind(this), 1000);
     setTimeout(function(){ this.setState({ percentage: 50 }) }.bind(this), 1001);
+    setTimeout(function(){ this.handlePercentage() }.bind(this), 1500);
+    setTimeout(function(){ this.setState({ percentage: 65 }) }.bind(this), 1501);
     setTimeout(function(){ this.handlePercentage() }.bind(this), 2000);
-    setTimeout(function(){ this.setState({ percentage: 75 }) }.bind(this), 2001);
+    setTimeout(function(){ this.setState({ percentage: 80 }) }.bind(this), 2001);
     setTimeout(function(){ this.handlePercentage() }.bind(this), 3000);
     this.setState({ selectedImage: e.target.value }, this.close);
   }

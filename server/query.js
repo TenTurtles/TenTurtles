@@ -73,7 +73,7 @@ const apiQuery = (data, res) => {
         return beer.refactor(result.data.data);
       });
     });
-    //return exampleData.beerData;
+    // return exampleData.beerData;
   })
   .then(beers => {
     beers.map(beer => {
