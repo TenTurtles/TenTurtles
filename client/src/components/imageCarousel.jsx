@@ -13,7 +13,10 @@ class ImageCarousel extends React.Component {
           this.props.images.map((image, i) => {
             return (
               <Carousel.Item key={i}>
-                <img width={840} height={384} alt="900x500" src={image}/>
+                <img style={styles.image} width={840} height={384} alt="900x500" src={image.url}/>
+                <Carousel.Caption>
+                  <h2>{image.caption}</h2>
+                </Carousel.Caption>
               </Carousel.Item>
             )
           })
@@ -27,7 +30,7 @@ export default ImageCarousel;
 
 let styles = {
   image: {
-    overflow: "hidden"
+    margin: "auto"
   }
 }
         // <Carousel.Item>
