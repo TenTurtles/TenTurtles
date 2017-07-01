@@ -66,6 +66,7 @@ export default class Upload extends React.Component {
   }
 
   handleChange(e, food) {
+    //
     setTimeout(function(){ this.setState({ percentage: 10 }) }.bind(this), 0);
     setTimeout(function(){ this.handlePercentage() }.bind(this), 500);
     setTimeout(function(){ this.setState({ percentage: 25 }) }.bind(this), 501);
