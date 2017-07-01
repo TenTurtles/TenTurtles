@@ -44,9 +44,11 @@ class App extends React.Component {
     e.preventDefault();
     let passPref = prefHelper.preferences(this.state.prefer);
     this.setState({ percent: 10 })
+    setTimeout(function(){ this.setState({ percent: 10 }) }.bind(this), 500);
     setTimeout(function(){ this.setState({ percent: 25 }) }.bind(this), 1000);
-    setTimeout(function(){ this.setState({ percent: 50 }) }.bind(this), 2000);
-    setTimeout(function(){ this.setState({ percent: 75 }) }.bind(this), 3000);
+    setTimeout(function(){ this.setState({ percent: 40 }) }.bind(this), 1500);
+    setTimeout(function(){ this.setState({ percent: 60 }) }.bind(this), 2000);
+    setTimeout(function(){ this.setState({ percent: 80 }) }.bind(this), 3000);
     $.ajax({
       url: '/search',
       method: 'POST',
