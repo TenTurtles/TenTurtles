@@ -6,6 +6,7 @@ import Drop from './components/nav.jsx';
 import Upload from './components/upload.jsx';
 import PairingList from './components/pairingList.jsx';
 import ImageCarousel from './components/imageCarousel.jsx';
+import { Line, Circle } from 'rc-progress';
 const prefHelper = require('../../server/preferenceRefactor');
 
 
@@ -20,10 +21,12 @@ class App extends React.Component {
         finalWines: [],
         finalBeers: []
       },
-      images: []
+      images: [],
+      percent: 0
     };
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.changePercentage = this.changePercentage.bind(this);
   }
 
   handleChange(event) {
@@ -33,9 +36,17 @@ class App extends React.Component {
     });
   }
 
+  changePercentage() {
+    this.setState({ percent: 50 });
+  }
+
   search(e) {
     e.preventDefault();
     let passPref = prefHelper.preferences(this.state.prefer);
+    this.setState({ percent: 10 })
+    setTimeout(function(){ this.setState({ percent: 25 }) }.bind(this), 1000);
+    setTimeout(function(){ this.setState({ percent: 50 }) }.bind(this), 2000);
+    setTimeout(function(){ this.setState({ percent: 75 }) }.bind(this), 3000);
     $.ajax({
       url: '/search',
       method: 'POST',
@@ -44,6 +55,7 @@ class App extends React.Component {
         choices: passPref || null
       },
       success: data => {
+        this.setState({ percent: 100 })
         this.setPairings(data);
       }
     });
@@ -76,6 +88,7 @@ class App extends React.Component {
   render() {
     return (
       <Grid style={styles.container}>
+        <Line percent={this.state.percent} strokeWidth="2" strokeColor="#D3D3D3" />
         <h1 style={styles.h1}>🍷🍅🍉🍊🍌🍍🍺🍲🍦</h1>
         <Row>
             <Col xs={2}>
