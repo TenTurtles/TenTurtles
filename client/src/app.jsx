@@ -36,8 +36,8 @@ class App extends React.Component {
     });
   }
 
-  changePercentage() {
-    this.setState({ percent: 50 });
+  changePercentage(percentage) {
+    this.setState({ percent: percentage });
   }
 
   search(e) {
@@ -92,7 +92,7 @@ class App extends React.Component {
         <h1 style={styles.h1}>🍷🍅🍉🍊🍌🍍🍺🍲🍦</h1>
         <Row>
             <Col xs={2}>
-              <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer}/>
+              <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer} changePercentage={this.changePercentage} />
             </Col>
             <form style={styles.form}>
             <Col xs={9}>
