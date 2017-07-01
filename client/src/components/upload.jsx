@@ -13,9 +13,15 @@ export default class Upload extends React.Component {
       uploadedFileCloudinaryUrl: '',
       imageScanned: false,
       imageScanResults: [],
-      selectedImage: ''
+      selectedImage: '',
+      percentage: 0
     };
     this.clarifai = this.clarifai.bind(this);
+    this.handlePercentage = this.handlePercentage.bind(this);
+  }
+
+  handlePercentage() {
+    this.props.changePercentage(this.state.percentage);
   }
 
   getInitialState() {
@@ -36,7 +42,10 @@ export default class Upload extends React.Component {
         url: this.state.uploadedFileCloudinaryUrl
       },
       success: data => {
-        this.props.setPairings(data);
+        setTimeout(function(){ this.setState({ percentage: 100 }) }.bind(this), 0);
+        setTimeout(function(){ this.handlePercentage() }.bind(this), 10);
+        setTimeout(function(){ this.props.setPairings(data); }.bind(this), 20);
+        
       }
     });
     $.ajax({
@@ -57,8 +66,17 @@ export default class Upload extends React.Component {
   }
 
   handleChange(e, food) {
+    setTimeout(function(){ this.setState({ percentage: 10 }) }.bind(this), 0);
+    setTimeout(function(){ this.handlePercentage() }.bind(this), 500);
+    setTimeout(function(){ this.setState({ percentage: 25 }) }.bind(this), 501);
+    setTimeout(function(){ this.handlePercentage() }.bind(this), 1000);
+    setTimeout(function(){ this.setState({ percentage: 50 }) }.bind(this), 1001);
+    setTimeout(function(){ this.handlePercentage() }.bind(this), 1500);
+    setTimeout(function(){ this.setState({ percentage: 65 }) }.bind(this), 1501);
+    setTimeout(function(){ this.handlePercentage() }.bind(this), 2000);
+    setTimeout(function(){ this.setState({ percentage: 80 }) }.bind(this), 2001);
+    setTimeout(function(){ this.handlePercentage() }.bind(this), 3000);
     this.setState({ selectedImage: e.target.value }, this.close);
-
   }
 
   onImageDrop(files) {
