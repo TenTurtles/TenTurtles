@@ -92,7 +92,7 @@ class App extends React.Component {
     return (
       <Grid style={styles.container}>
         <section style={ sectionStyle }>
-          <Line percent={this.state.percent} strokeWidth="2" strokeColor="#D3D3D3" />
+
           <h1 style={styles.h1}>🍷🍅🍉🍊🍌🍍🍺🍲🍦</h1>
           <Row>
               <Col xs={2}>
@@ -106,6 +106,12 @@ class App extends React.Component {
                 <input src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-hi.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
               </Col>
             </form>
+          </Row>
+
+          <br />
+
+          <Row>
+            <Line percent={this.state.percent} strokeWidth="2" strokeColor="#D3D3D3" />
           </Row>
 
           <br />

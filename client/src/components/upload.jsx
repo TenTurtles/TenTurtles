@@ -45,7 +45,7 @@ export default class Upload extends React.Component {
         setTimeout(function(){ this.setState({ percentage: 100 }) }.bind(this), 0);
         setTimeout(function(){ this.handlePercentage() }.bind(this), 10);
         setTimeout(function(){ this.props.setPairings(data); }.bind(this), 20);
-        
+
       }
     });
     $.ajax({
@@ -137,7 +137,7 @@ export default class Upload extends React.Component {
               multiple={false}
               accept="image/*"
               onDrop={this.onImageDrop.bind(this)}>
-              <img style={styles.image} src="http://shepherdandwhite.co.uk/assets/shared/img/noimg.png"></img>
+              <img style={styles.image} src="https://www.shareicon.net/download/2017/04/22/885129_camera_512x512.png"></img>
             </Dropzone>
           </div>
         </form>
