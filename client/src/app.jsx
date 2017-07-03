@@ -7,7 +7,7 @@ import Upload from './components/upload.jsx';
 import PairingList from './components/pairingList.jsx';
 import ImageCarousel from './components/imageCarousel.jsx';
 import { Line, Circle } from 'rc-progress';
-import Background from '../image/butcher-block-161.jpg';
+import Background from '../dist/433ce5036a9f794f22d48bccd2208b0d.jpg';
 const prefHelper = require('../../server/preferenceRefactor');
 
 

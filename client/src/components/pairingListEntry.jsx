@@ -33,6 +33,7 @@ class pairingListEntry extends React.Component {
   }
 
   render() {
+    console.log('this.props.pair: ', this.props.pair);
     return (
       <Accordion>
         <Panel header={
