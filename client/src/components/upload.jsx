@@ -4,7 +4,7 @@ import request from 'superagent';
 import $ from 'jquery';
 import {Modal, Button, Radio, FormGroup} from 'react-bootstrap';
 const cloud = require('../../../server/config.js');
-const prefHelper = require('../../../server/preferenceRefactor');
+const helpers = require('../../../server/helpers');
 
 export default class Upload extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ export default class Upload extends React.Component {
       method: 'POST',
       data: {
         item: this.state.selectedImage,
-        choices: prefHelper.preferences(this.props.preferences) || null,
+        choices: helpers.preferences(this.props.preferences) || null,
         url: this.state.uploadedFileCloudinaryUrl
       },
       success: data => {

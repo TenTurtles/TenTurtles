@@ -122,5 +122,7 @@ const beerData = [{ name: '10* Farmers Pale Ale',
   image: 'Not available' 
 }];
 
-module.exports.wineData = wineData;
-module.exports.beerData = beerData;
+module.exports = {
+  wineData: wineData,
+  beerData: beerData
+};
