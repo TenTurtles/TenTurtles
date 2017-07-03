@@ -1,4 +1,5 @@
 body {
+  /*transform: {rotate: 90deg};*/
+  background-image: url('433ce5036a9f794f22d48bccd2208b0d.jpg');
   background-color: #a21212;
-  padding: 75px;
 }
