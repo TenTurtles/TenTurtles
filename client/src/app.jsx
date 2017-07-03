@@ -45,11 +45,11 @@ class App extends React.Component {
     e.preventDefault();
     let passPref = prefHelper.preferences(this.state.prefer);
     this.setState({ percent: 10 })
-    setTimeout(function(){ this.setState({ percent: 10 }) }.bind(this), 500);
-    setTimeout(function(){ this.setState({ percent: 25 }) }.bind(this), 1000);
-    setTimeout(function(){ this.setState({ percent: 40 }) }.bind(this), 1500);
-    setTimeout(function(){ this.setState({ percent: 60 }) }.bind(this), 2000);
-    setTimeout(function(){ this.setState({ percent: 80 }) }.bind(this), 3000);
+    setTimeout(function(){ if(this.state.percent != 100){this.setState({ percent: 10 })} }.bind(this), 500);
+    setTimeout(function(){ if(this.state.percent != 100){this.setState({ percent: 25 })} }.bind(this), 1000);
+    setTimeout(function(){ if(this.state.percent != 100){this.setState({ percent: 40 })} }.bind(this), 1500);
+    setTimeout(function(){ if(this.state.percent != 100){this.setState({ percent: 60 })} }.bind(this), 2000);
+    setTimeout(function(){ if(this.state.percent != 100){this.setState({ percent: 80 })} }.bind(this), 3000);
     $.ajax({
       url: '/search',
       method: 'POST',
@@ -129,7 +129,7 @@ class App extends React.Component {
 
           <Row>
             <Col xs={12}>
-              <PairingList pairs={this.state.pairs} />
+              <PairingList pairs={this.state.pairs} style={styles.card} />
             </Col>
           </Row>
         </section>
@@ -141,8 +141,8 @@ class App extends React.Component {
 var sectionStyle = {
   width: "100%",
   height: "100%",
-  backgroundImage: `url(${Background})`,
-  backgroundSize: 'cover',
+  // backgroundImage: `url(${Background})`,
+  // backgroundSize: 'cover',
 };
 
 let styles = {
@@ -151,8 +151,14 @@ let styles = {
     textAlign: 'center'
   },
   container: {
+    backgroundImage: `url(${Background})`,
+    // backgroundRepeat: 'no-repeat',
+    // backgroundSize: 'cover',
     width: '100%',
-    padding: '10px',
+    padding: '75px',
+  },
+  card : {
+    backgroundColor: 'rgba(215, 217, 221, .85)'
   },
   form: {
   },
@@ -160,7 +166,8 @@ let styles = {
     fontSize: '35px',
     marginLeft: '-35px',
     width: '100%',
-    height: '75px'
+    height: '75px',
+    backgroundColor: 'rgba(215, 217, 221, .85)'
   },
   inputBtn: {
     marginLeft: '-30px',

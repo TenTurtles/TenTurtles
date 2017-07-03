@@ -37,7 +37,7 @@ class pairingListEntry extends React.Component {
       <Accordion>
         <Panel header={
           <Grid style={styles.container}>
-            <Row >
+            <Row>
               <Col xs={5}>
                 <Image style={styles.thumbnail} src={this.props.pair[0].image} rounded />
               </Col>
@@ -59,7 +59,7 @@ class pairingListEntry extends React.Component {
             <h2 style={styles.h2} ><a href={this.props.pair[0].url}>{this.props.pair[0].label}</a></h2>
             <Image src={this.state.favorite ? "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/2000px-Love_Heart_SVG.svg.png" : "http://www.smfpl.org/files/images/broken%20heart.png"} style={styles.favorite} onClick={this.favorite.bind(this, this.props.pair)}></Image>
             <Row>
-              <Col xs={12}>
+              <Col xs={12} >
                 <ListGroup style={styles.listGroup}>
                   {
                     this.props.pair[0].ingredients.map((ingredient, i) => {
@@ -131,7 +131,7 @@ let styles = {
     fontSize: '24px',
     marginRight: '10px',
     padding: '30px',
-    border: 'outset'
+    border: 'outset',
   },
   p: {
     fontSize: '24px',
