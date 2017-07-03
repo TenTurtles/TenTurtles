@@ -10,7 +10,7 @@ class ImageCarousel extends React.Component {
     return (
       <Carousel>
         {
-          this.props.images.map((image, i) => {
+          this.props.images.reverse().map((image, i) => {
             return (
               <Carousel.Item key={i}>
                 <img style={styles.image} width={840} height={384} alt="900x500" src={image.url}/>
