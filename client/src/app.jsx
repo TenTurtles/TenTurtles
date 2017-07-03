@@ -7,9 +7,9 @@ import Upload from './components/upload.jsx';
 import PairingList from './components/pairingList.jsx';
 import ImageCarousel from './components/imageCarousel.jsx';
 import { Line, Circle } from 'rc-progress';
-import Background from '../dist/433ce5036a9f794f22d48bccd2208b0d.jpg';
-const prefHelper = require('../../server/preferenceRefactor');
 
+const helpers = require('../../server/helpers');
+import Background from '../dist/433ce5036a9f794f22d48bccd2208b0d.jpg';
 
 class App extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class App extends React.Component {
 
   search(e) {
     e.preventDefault();
-    let passPref = prefHelper.preferences(this.state.prefer);
+    let passPref = helpers.preferences(this.state.prefer);
     this.setState({ percent: 10 })
     setTimeout(function(){ if(this.state.percent != 100){this.setState({ percent: 10 })} }.bind(this), 500);
     setTimeout(function(){ if(this.state.percent != 100){this.setState({ percent: 25 })} }.bind(this), 1000);
@@ -140,7 +140,7 @@ class App extends React.Component {
           </Row>
         </section>
       </Grid>
-    )
+    );
   }
 }
 
