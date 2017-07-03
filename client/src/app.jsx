@@ -7,6 +7,7 @@ import Upload from './components/upload.jsx';
 import PairingList from './components/pairingList.jsx';
 import ImageCarousel from './components/imageCarousel.jsx';
 import { Line, Circle } from 'rc-progress';
+import Background from '../image/butcher-block-161.jpg';
 const prefHelper = require('../../server/preferenceRefactor');
 
 
@@ -90,51 +91,59 @@ class App extends React.Component {
   render() {
     return (
       <Grid style={styles.container}>
-        <Line percent={this.state.percent} strokeWidth="2" strokeColor="#D3D3D3" />
-        <h1 style={styles.h1}>🍷🍅🍉🍊🍌🍍🍺🍲🍦</h1>
-        <Row>
-            <Col xs={2}>
-              <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer} changePercentage={this.changePercentage} />
+        <section style={ sectionStyle }>
+          <Line percent={this.state.percent} strokeWidth="2" strokeColor="#D3D3D3" />
+          <h1 style={styles.h1}>🍷🍅🍉🍊🍌🍍🍺🍲🍦</h1>
+          <Row>
+              <Col xs={2}>
+                <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer} changePercentage={this.changePercentage} />
+              </Col>
+              <form style={styles.form}>
+              <Col xs={9}>
+                <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
+              </Col>
+              <Col xs={1}>
+                <input src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-hi.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
+              </Col>
+            </form>
+          </Row>
+
+          <br />
+
+          <Row>
+            <Col xs={12}>
+              <Drop handlePreferences={this.handlePref.bind(this)}/>
             </Col>
-            <form style={styles.form}>
-            <Col xs={9}>
-              <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
+
+          </Row>
+
+          <hr />
+
+          <Row>
+
+            <ImageCarousel images={this.state.images} />
+
+          </Row>
+
+          <hr />
+
+          <Row>
+            <Col xs={12}>
+              <PairingList pairs={this.state.pairs} />
             </Col>
-            <Col xs={1}>
-              <input src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-hi.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
-            </Col>
-          </form>
-        </Row>
-
-        <br />
-
-        <Row>
-          <Col xs={12}>
-            <Drop handlePreferences={this.handlePref.bind(this)}/>
-          </Col>
-
-        </Row>
-
-        <hr />
-
-        <Row>
-
-          <ImageCarousel images={this.state.images} />
-
-        </Row>
-
-        <hr />
-
-        <Row>
-          <Col xs={12}>
-            <PairingList pairs={this.state.pairs} />
-          </Col>
-        </Row>
-
+          </Row>
+        </section>
       </Grid>
     )
   }
 }
+
+var sectionStyle = {
+  width: "100%",
+  height: "100%",
+  backgroundImage: `url(${Background})`,
+  backgroundSize: 'cover',
+};
 
 let styles = {
   h1: {
