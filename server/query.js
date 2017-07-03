@@ -43,13 +43,13 @@ const apiQuery = (data, res) => {
     });
   })
   .then(wines => {
-    // return Promise.map(wines, wineArray => {
-    //   let random = Math.floor(Math.random() * (wineArray.length));
-    //   return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|50)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
-    //     return wine.refactor(result.data.Products.List);
-    //   });
-    // });
-    return exampleData.wineData;
+    return Promise.map(wines, wineArray => {
+      let random = Math.floor(Math.random() * (wineArray.length));
+      return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|50)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
+        return wine.refactor(result.data.Products.List);
+      });
+    });
+    // return exampleData.wineData;
   })
   .then(wines => {
     wines.map(wine => {
@@ -66,14 +66,14 @@ const apiQuery = (data, res) => {
     });
   })
   .then(beerIds => {
-    // return Promise.map(beerIds, beerId => {
-    //   let random = Math.floor(Math.random() * (beerId.length));
-    //   return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
-    //     console.log(result.data.data);
-    //     return beer.refactor(result.data.data);
-    //   });
-    // });
-    return exampleData.beerData;
+    return Promise.map(beerIds, beerId => {
+      let random = Math.floor(Math.random() * (beerId.length));
+      return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
+        console.log(result.data.data);
+        return beer.refactor(result.data.data);
+      });
+    });
+    // return exampleData.beerData;
   })
   .then(beers => {
     beers.map(beer => {
