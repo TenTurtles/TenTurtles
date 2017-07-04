@@ -57,18 +57,18 @@ const apiQuery = (data, res) => {
   // ------------------------ Start Wines' matching API ----------------------------- //
   .then(wines => {
     // Uncomment to use REAL data search //
-    return Promise.map(wines, wineArray => {
-      // Randomly select one wine from given choice for quering //
-      let random = Math.floor(Math.random() * (wineArray.length));
-      // Please get wine API key //
-      return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|50)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
-        // Refactor data from wine helpers function //
-        return helpers.wines(result.data.Products.List);
-      });
-    });
+    // return Promise.map(wines, wineArray => {
+    //   // Randomly select one wine from given choice for quering //
+    //   let random = Math.floor(Math.random() * (wineArray.length));
+    //   // Please get wine API key //
+    //   return axios.get('http://services.wine.com/api/beta2/service.svc/JSON/catalog?filter=price(0|50)&state=CA&apikey=' + api.wine_key, {"search": wineArray[random]}).then(result => {
+    //     // Refactor data from wine helpers function //
+    //     return helpers.wines(result.data.Products.List);
+    //   });
+    // });
 
     // // Uncomment for FAKE data search // //
-    // return exampleData.wineData;
+    return exampleData.wineData;
   })
   // --------------------------------------- //
   // Push wines to final result //
@@ -88,24 +88,24 @@ const apiQuery = (data, res) => {
     });
   })
   // ------------------------ Start Beers' matching API ----------------------------- //
-  // 
+  //
   .then(beerIds => {
     // Uncomment to use REAL data search //
-    return Promise.map(beerIds, beerId => {
-      // randomly select one beer from given choices for quering //
-      let random = Math.floor(Math.random() * (beerId.length));
-      // Please get Beer API key //
-      return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
-        // refactor with beers helper function //
-        return helpers.beers(result.data.data);
-      });
-    });
+    // return Promise.map(beerIds, beerId => {
+    //   // randomly select one beer from given choices for quering //
+    //   let random = Math.floor(Math.random() * (beerId.length));
+    //   // Please get Beer API key //
+    //   return axios.get('http://api.brewerydb.com/v2/beers?styleId=' + beerId +'&key=' + api.beer_key).then(result => {
+    //     // refactor with beers helper function //
+    //     return helpers.beers(result.data.data);
+    //   });
+    // });
 
     // // Uncomment for FAKE data search // //
-    // return exampleData.beerData;
+    return exampleData.beerData;
   })
   .then(beers => {
-    // push beers to final result 
+    // push beers to final result
     beers.map(beer => {
       finalResults.finalBeers.push([beer]);
     });
