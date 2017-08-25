@@ -69,6 +69,7 @@ class App extends React.Component {
         url: '/images',
         method: 'GET',
         success: data => {
+          console.log('images: ', data);
           this.setState({
             images: data
           });
@@ -93,7 +94,7 @@ class App extends React.Component {
       <Grid style={styles.container}>
         <section style={ sectionStyle }>
 
-          <h1 style={styles.h1}>🍷🍅🍉🍊🍌🍍🍺🍲🍦</h1>
+          <h1 style={styles.h1}>Paired</h1>
           <Row>
               <Col xs={2}>
                 <Upload setPairings={this.setPairings.bind(this)} preferences={this.state.prefer} changePercentage={this.changePercentage} />
@@ -103,7 +104,7 @@ class App extends React.Component {
                 <FormControl style={styles.inputBox} bsSize="large" type="text" placeholder="Search here" onChange={this.handleChange} />
               </Col>
               <Col xs={1}>
-                <input src="http://www.clker.com/cliparts/Y/x/X/j/U/f/search-button-without-text-hi.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
+                <input src="https://meraki.cisco.com/blog/wp-content/themes/shire/images/search-icon.png" style={styles.inputBtn} type="image" onClick={this.search}></input>
               </Col>
             </form>
           </Row>
@@ -147,19 +148,18 @@ class App extends React.Component {
 var sectionStyle = {
   width: "100%",
   height: "100%",
-  // backgroundImage: `url(${Background})`,
-  // backgroundSize: 'cover',
 };
 
 let styles = {
   h1: {
     fontSize: '85px',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'rgba(215, 217, 221, .85)',
+    fontFamily: 'Apple Chancery',
+    fontWeight: 'bold'
   },
   container: {
     backgroundImage: `url(${Background})`,
-    // backgroundRepeat: 'no-repeat',
-    // backgroundSize: 'cover',
     width: '100%',
     padding: '75px',
   },
