@@ -112,12 +112,6 @@ class App extends React.Component {
           <br />
 
           <Row>
-            <Line percent={this.state.percent} strokeWidth="2" strokeColor="#D3D3D3" />
-          </Row>
-
-          <br />
-
-          <Row>
             <Col xs={12}>
               <Drop handlePreferences={this.handlePref.bind(this)}/>
             </Col>
